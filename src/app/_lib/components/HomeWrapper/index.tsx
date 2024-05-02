@@ -6,7 +6,7 @@ import { copywrite } from '../../const/copywrite';
 
 import StdIn from '../StdIn';
 import { useState } from 'react';
-import OptOut from '../OptOut';
+import Disclaimer from '../Disclaimer';
 
 export default function HomeWrapper() {
   const [typedOut, setTypedOut] = useState(false);
@@ -14,7 +14,7 @@ export default function HomeWrapper() {
   return (
     <>
       <BufferText text={copywrite.summary} onDone={() => setTypedOut(true)} />
-      {typedOut ? <OptOut /> : null}
+      {typedOut ? <Disclaimer /> : null}
       <StdIn enabled={typedOut} />
     </>
   );

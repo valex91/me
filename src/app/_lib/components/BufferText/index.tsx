@@ -34,7 +34,7 @@ export default function BufferText({
   }, [buffer, done]);
 
   return (
-    <p>
+    <p className="border p-1">
       {`${buffer}`}
       {!done ? <BlinkingCaret /> : null}
     </p>

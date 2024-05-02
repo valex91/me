@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
-import Name from './_lib/components/Name';
+import '../globals.css';
+import Name from '../_lib/components/Name';
 
 const mesloLGS = localFont({
-  src: '../../public/fonts/MesloLGS NF Regular.ttf',
+  src: '../../../public/fonts/MesloLGS NF Regular.ttf',
   variable: '--font-mesloLGS',
 });
 
