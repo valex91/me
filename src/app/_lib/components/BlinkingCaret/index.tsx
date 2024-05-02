@@ -11,11 +11,11 @@ export default function BlinkingCaret() {
     }, 500);
 
     return () => clearInterval(intervalId);
-  });
+  }, []);
 
   return (
-    <span className="text-white text-[2rem] leading-[2rem]">
-      {String.fromCharCode(blank ? 9646 : 9647)}{' '}
-    </span>
+    <span
+      className={`w-[1rem] h-[20px] border-r-[10px] ${blank ? 'border-transparent' : 'border-white'}`}
+    ></span>
   );
 }

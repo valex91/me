@@ -1,5 +1,5 @@
 const summary = `Full Stack Senior Software engineer 
-extensive experience in developing, deploying, and
+with extensive experience in developing, deploying, and
 managing scalable web applications on AWS. Proficient in
 leveraging TypeScript and Node.js to build backend
 solutions and front-end interfaces. Expertise in

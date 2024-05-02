@@ -11,5 +11,9 @@ const ASCII_NAME = `
   ╚═══╝  ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚══════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝    ╚═════╝ `
 
 export default function Name() {
-  return <pre className="text-[0.75rem] text-green mb-4">{ASCII_NAME}</pre>;
+  return (
+    <pre className="text-[0.35rem] text-center text-green mb-4">
+      {ASCII_NAME}
+    </pre>
+  );
 }

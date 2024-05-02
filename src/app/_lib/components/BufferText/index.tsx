@@ -6,10 +6,12 @@ import BlinkingCaret from '../BlinkingCaret';
 export type BufferTextProps = {
   text: string;
   deliveryPerCharacter?: number;
+  onDone: () => void;
 };
 export default function BufferText({
   text,
-  deliveryPerCharacter = 30,
+  deliveryPerCharacter = 15,
+  onDone,
 }: BufferTextProps) {
   const [buffer, setBuffer] = useState('');
   const [done, setDone] = useState(false);
@@ -20,6 +22,7 @@ export default function BufferText({
         setBuffer((b) => b + text[b.length]);
       } else {
         if (!done) {
+          onDone();
           setDone(true);
         }
       }
@@ -32,7 +35,7 @@ export default function BufferText({
 
   return (
     <p>
-      {buffer}
+      {`${buffer}`}
       {!done ? <BlinkingCaret /> : null}
     </p>
   );
