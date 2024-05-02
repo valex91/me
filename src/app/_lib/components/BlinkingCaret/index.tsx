@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function BlinkingCaret() {
   const [blank, setBlank] = useState(true);
@@ -15,7 +15,7 @@ export default function BlinkingCaret() {
 
   return (
     <span className="text-white text-[2rem] leading-[2rem]">
-      {String.fromCharCode(blank ? 9646 : 9647)}{" "}
+      {String.fromCharCode(blank ? 9646 : 9647)}{' '}
     </span>
   );
 }

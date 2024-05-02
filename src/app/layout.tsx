@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import './globals.css';
 
 const mesloLGS = localFont({
-  src: "../../public/fonts/MesloLGS NF Regular.ttf",
-  variable: "--font-mesloLGS",
+  src: '../../public/fonts/MesloLGS NF Regular.ttf',
+  variable: '--font-mesloLGS',
 });
 
 export const metadata: Metadata = {
-  title: "Valentino Losito",
-  description: "my page",
+  title: 'Valentino Losito',
+  description: 'my page',
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mesloLGS.className + " p-1.5"}>{children}</body>
+      <body className={mesloLGS.className + ' p-1.5'}>{children}</body>
     </html>
   );
 }

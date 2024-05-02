@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import BlinkingCaret from "../BlinkingCaret";
+import { useEffect, useState } from 'react';
+import BlinkingCaret from '../BlinkingCaret';
 
 export type BufferTextProps = {
   text: string;
@@ -11,7 +11,7 @@ export default function BufferText({
   text,
   deliveryPerCharacter = 30,
 }: BufferTextProps) {
-  const [buffer, setBuffer] = useState("");
+  const [buffer, setBuffer] = useState('');
   const [done, setDone] = useState(false);
 
   useEffect(() => {

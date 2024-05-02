@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import BlinkingCaret from "../BlinkingCaret";
-import Breadcrumb from "../BreadCrumb";
+import { useState } from 'react';
+import BlinkingCaret from '../BlinkingCaret';
+import Breadcrumb from '../BreadCrumb';
 
 export default function StdIn() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   return (
     <>
       <Breadcrumb />
@@ -15,7 +15,7 @@ export default function StdIn() {
         onChange={(v) => {
           setValue(v.target.value);
         }}
-        onSubmit={() => console.log("submit")}
+        onSubmit={() => console.log('submit')}
         className="w-0 border-0 p-0 m-0 bg-transparent outline-none"
         type="text"
       ></input>
