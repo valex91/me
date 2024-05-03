@@ -12,10 +12,11 @@ export default function Disclaimer() {
         >
           click here
         </Link>
-        .Otherwise,{" "}
+        . Otherwise,{" "}
         <Link
+          download="CV Valentino Losito.pdf"
           className="text-green underline pointer"
-          href={{ pathname: "/optout" }}
+          href={{ pathname: "/docs/cv.pdf" }}
         >
           download my CV
         </Link>{" "}

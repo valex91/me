@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import BufferText from '../BufferText';
+import BufferText from "../BufferText";
 
-import { copywrite } from '../../const/copywrite';
+import { copywrite } from "../../const/copywrite";
 
-import StdIn from '../StdIn';
-import { useState } from 'react';
-import Disclaimer from '../Disclaimer';
+import { useState } from "react";
+import Disclaimer from "../Disclaimer";
+import StdInWrapper from "../StdInWrapper";
 
 export default function HomeWrapper() {
   const [typedOut, setTypedOut] = useState(false);
@@ -15,7 +15,7 @@ export default function HomeWrapper() {
     <>
       <BufferText text={copywrite.summary} onDone={() => setTypedOut(true)} />
       {typedOut ? <Disclaimer /> : null}
-      <StdIn enabled={typedOut} />
+      <StdInWrapper enabled={typedOut} />
     </>
   );
 }

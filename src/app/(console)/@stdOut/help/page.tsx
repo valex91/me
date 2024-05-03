@@ -1,9 +1,10 @@
-import StdIn from '@/app/_lib/components/StdIn';
+import Commands from "./_lib/components/Commands";
+import StdInWrapper from "@/app/_lib/components/StdInWrapper";
 
 export default function HelpPage() {
   return (
     <>
-      <StdIn enabled={true} />
+      <StdInWrapper initialState={<Commands />} enabled={true} />
     </>
   );
 }

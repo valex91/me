@@ -8,9 +8,10 @@ import { parseStdIn } from './parseStdIn';
 
 type StdInProps = {
   enabled: boolean;
+  printOutput: (output: string) => void;
 };
 
-export default function StdIn({ enabled }: StdInProps) {
+export default function StdIn({ enabled, printOutput }: StdInProps) {
   const [cmd, setCmd] = useState('');
   const router = useRouter();
   const ref = useRef<HTMLInputElement>(null);
@@ -20,12 +21,27 @@ export default function StdIn({ enabled }: StdInProps) {
     }
   }, [enabled]);
 
+  useEffect(() => {
+    const focusInput = setInterval(() => {
+      if (ref && ref.current && document.activeElement != ref.current) {
+        ref.current.focus();
+      }
+    }, 200);
+
+    return () => {
+      clearInterval(focusInput);
+    };
+  }, []);
+
   return (
     <form
       className="flex items-center"
       onSubmit={(e) => {
         e.preventDefault();
-        parseStdIn(cmd, router);
+        if (cmd) {
+          parseStdIn(cmd, router, printOutput);
+        }
+        setCmd('');
       }}
     >
       <label htmlFor="stdIn">
@@ -37,6 +53,7 @@ export default function StdIn({ enabled }: StdInProps) {
         ref={ref}
         disabled={!enabled}
         autoFocus
+        value={cmd}
         onChange={(v) => {
           setCmd(v.target.value);
         }}
