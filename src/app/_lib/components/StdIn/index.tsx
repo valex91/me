@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import BlinkingCaret from '../BlinkingCaret';
-import Breadcrumb from '../BreadCrumb';
-import { useRouter } from 'next/navigation';
-import { parseStdIn } from './parseStdIn';
+import { useEffect, useRef, useState } from "react";
+import BlinkingCaret from "../BlinkingCaret";
+import Breadcrumb from "../BreadCrumb";
+import { usePathname, useRouter } from "next/navigation";
+import { parseStdIn } from "./parseStdIn";
 
 type StdInProps = {
   enabled: boolean;
@@ -12,8 +12,9 @@ type StdInProps = {
 };
 
 export default function StdIn({ enabled, printOutput }: StdInProps) {
-  const [cmd, setCmd] = useState('');
+  const [cmd, setCmd] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
   const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (enabled && ref.current) {
@@ -39,9 +40,9 @@ export default function StdIn({ enabled, printOutput }: StdInProps) {
       onSubmit={(e) => {
         e.preventDefault();
         if (cmd) {
-          parseStdIn(cmd, router, printOutput);
+          parseStdIn(cmd, router, printOutput, pathname);
         }
-        setCmd('');
+        setCmd("");
       }}
     >
       <label htmlFor="stdIn">

@@ -6,6 +6,8 @@ import {
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { CLEAR_CHAR, PrintOutputFn } from "../StdInWrapper";
 import { lsStrategy } from "./ls";
+import { cdStrategy } from "./cd";
+import router from "next/router";
 
 export type CmdParams = Record<"flags" | "args", string[]>;
 const AVAILABLE_COMMAND = [
@@ -13,16 +15,13 @@ const AVAILABLE_COMMAND = [
   ...uova_di_pasqua.map((cmd) => cmd.cmd),
 ];
 let lastRoutedCommand: CommandsEnum | null = null;
-
+export type CommandStrategy = (
+  router: AppRouterInstance,
+  print: PrintOutputFn,
+  cmdParams: CmdParams
+) => void;
 //routable command need to be abstracted probably lets investigate what is needed when there is more implementations
-const cmdStrategyMap: Record<
-  CommandsEnum,
-  (
-    router: AppRouterInstance,
-    print: PrintOutputFn,
-    cmdParams: CmdParams
-  ) => void
-> = {
+const cmdStrategyMap: Record<CommandsEnum, CommandStrategy> = {
   [CommandsEnum.HELP]: (router: AppRouterInstance, _: unknown, __: unknown) => {
     if (lastRoutedCommand === CommandsEnum.HELP) {
       window.location.reload();
@@ -31,9 +30,9 @@ const cmdStrategyMap: Record<
       lastRoutedCommand = CommandsEnum.HELP;
     }
   },
-  [CommandsEnum.CD]: (router: AppRouterInstance) => router.back(),
+  [CommandsEnum.CD]: cdStrategy,
   [CommandsEnum.LS]: lsStrategy,
-  [CommandsEnum.WHOAMI]: (_: never, print: PrintOutputFn) => {
+  [CommandsEnum.WHOAMI]: (_: unknown, print: PrintOutputFn) => {
     print("root@mainframe: You are in!");
   },
   [CommandsEnum.CLEAR]: (_: AppRouterInstance, print: PrintOutputFn) => {
@@ -45,7 +44,8 @@ const cmdStrategyMap: Record<
 export const parseStdIn = (
   cmd: string,
   router: AppRouterInstance,
-  printOutput: PrintOutputFn
+  printOutput: PrintOutputFn,
+  context: string
 ) => {
   const cmdSplit = cmd.split(" ");
   const cmdHead = cmdSplit[0];
@@ -60,9 +60,13 @@ export const parseStdIn = (
     cmdStrategyMap[cmdHead as keyof typeof cmdStrategyMap](
       router,
       printOutput,
-      { flags, args }
+      { flags, args },
+      context
     );
   } else {
     printOutput(`command not found: ${cmdHead}`);
   }
 };
+function printOutput(output: string): void {
+  throw new Error("Function not implemented.");
+}
