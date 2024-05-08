@@ -2,45 +2,45 @@ import {
   CommandsEnum,
   FlagsEnum,
   flagForCommandValidator,
-} from '@/app/(console)/@stdOut/help/_lib/components/Commands';
-import { PrintOutputFn } from '../StdInWrapper';
-import { CmdParams } from './parseStdIn';
-import { pathingArgsUtil } from './pathing';
+} from "@/app/(console)/@stdOut/help/_lib/components/Commands";
+import { PrintOutputFn } from "../StdInWrapper";
+import { CmdParams } from "./parseStdIn";
+import { pathingArgsUtil } from "./pathing";
 
 export enum Directories {
-  PROJECTS = '/projects',
-  SKILLS = 'skills/',
-  CAREER = 'carreer/',
-  BIO = 'bio/',
-  SOCIAL = 'social/',
-  ARTICLES = 'articles/',
-  HACKING = '.hacking/',
-  HELP = '/help',
-  ROOT = '/',
+  PROJECTS = "/projects",
+  SKILLS = "/skills",
+  CAREER = "/career",
+  // BIO = 'bio/',
+  // SOCIAL = 'social/',
+  // ARTICLES = 'articles/',
+  HACKING = ".hacking/",
+  HELP = "/help",
+  ROOT = "/",
 }
 
 export const directories = [
-  'projects/',
-  'skills/',
-  'carreer/ ',
-  'bio/',
-  'social/',
-  'articles/',
-  '.hacking/',
+  "projects/",
+  "skills/",
+  "career/ ",
+  // 'bio/',
+  // 'social/',
+  // 'articles/',
+  ".hacking/",
 ];
 
 const lsError = (path: string) => `ls: ${path} No such directory`;
 
 export const ContentInDirectory: Partial<Record<Directories, string[]>> = {
-  [Directories.PROJECTS]: ['twitterant.txt', 'tootsie.txt', 'me.txt'],
+  [Directories.PROJECTS]: ["twitterant.txt", "tootsie.txt", "me.txt"],
   [Directories.ROOT]: directories,
-  [Directories.SKILLS]: ['what_im_good_at.txt'],
-  [Directories.CAREER]: ['timeline.txt'],
+  [Directories.SKILLS]: ["what_im_good_at.txt"],
+  [Directories.CAREER]: ["timeline.txt"],
   [Directories.HACKING]: [
-    'october.txt',
-    'symfonos5.txt',
-    'five861.txt',
-    'meAndMyGF.txt',
+    "october.txt",
+    "symfonos5.txt",
+    "five861.txt",
+    "meAndMyGF.txt",
   ],
 };
 
@@ -68,11 +68,11 @@ const lsFlagsFilter = (cmdParams: CmdParams, directories: string[]) => {
       flagForCommandValidator(CommandsEnum.LS, flag)
     );
     if (relevantFlags.includes(FlagsEnum.ALL)) {
-      return directories.join(' ');
+      return directories.join(" ");
     }
   }
 
-  return directories.filter((dir) => !dir.startsWith('.')).join(' ');
+  return directories.filter((dir) => !dir.startsWith(".")).join(" ");
 };
 
 export const lsStrategy = (
@@ -88,7 +88,7 @@ export const lsStrategy = (
     print(
       content
         ? lsFlagsFilter(cmdParams, content)
-        : lsError(cmdParams.args.join(''))
+        : lsError(cmdParams.args.join(""))
     );
     return;
   }
@@ -103,9 +103,9 @@ export const lsStrategy = (
       flagForCommandValidator(CommandsEnum.LS, flag)
     );
     if (relevantFlags.includes(FlagsEnum.ALL)) {
-      print(directories.join(' '));
+      print(directories.join(" "));
       return;
     }
   }
-  print(directories.filter((dir) => !dir.startsWith('.')).join(' '));
+  print(directories.filter((dir) => !dir.startsWith(".")).join(" "));
 };

@@ -1,20 +1,22 @@
-import Twitterant from '@/app/(console)/@stdOut/projects/_lib/components/Twitterant';
-import { Directories } from '../StdIn/ls';
-import Tootsie from '@/app/(console)/@stdOut/projects/_lib/components/Tootsie';
-import Me from '@/app/(console)/@stdOut/projects/_lib/components/Me';
+import Twitterant from "@/app/(console)/@stdOut/projects/_lib/components/Twitterant";
+import { Directories } from "../StdIn/ls";
+import Tootsie from "@/app/(console)/@stdOut/projects/_lib/components/Tootsie";
+import Me from "@/app/(console)/@stdOut/projects/_lib/components/Me";
+import WhatImGoodAt from "@/app/(console)/@stdOut/skills/_lib/components/WhatImGoodAt";
+import Timeline from "@/app/(console)/@stdOut/career/_lib/components/Timeline";
 
 const fileToRenderMap = {
   [Directories.PROJECTS]: {
-    'twitterant.txt': <Twitterant />,
-    'tootsie.txt': <Tootsie />,
-    'me.txt': <Me />,
+    "twitterant.txt": <Twitterant />,
+    "tootsie.txt": <Tootsie />,
+    "me.txt": <Me />,
   },
   [Directories.SKILLS]: {
-    'what_im_good_at.txt': <></>,
+    "what_im_good_at.txt": <WhatImGoodAt />,
   },
   [Directories.HACKING]: {},
   [Directories.CAREER]: {
-    'timeline.txt': <></>,
+    "timeline.txt": <Timeline />,
   },
 };
 
@@ -30,13 +32,13 @@ type ProjectRendererProps = {
 export const catError = (
   fileToRenderPath: [CATDir, CATFileNameName<CATDir>]
 ) => {
-  let errorP = '';
+  let errorP = "";
   if (fileToRenderPath.length > 1) {
-    errorP = fileToRenderPath.join('/');
+    errorP = fileToRenderPath.join("/");
   } else {
     errorP = fileToRenderPath[0];
   }
-  return `cat: ${fileToRenderPath.join('/')}: No such file`;
+  return `cat: ${fileToRenderPath.join("/")}: No such file`;
 };
 
 function getValue<
