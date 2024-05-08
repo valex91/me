@@ -1,14 +1,17 @@
+'use client';
+
 export const enum CommandsEnum {
-  HELP = "help",
-  CD = "cd",
-  LS = "ls",
-  CAT = "cat",
-  CLEAR = "clear",
-  WHOAMI = "whoami",
+  HELP = 'help',
+  CD = 'cd',
+  LS = 'ls',
+  CAT = 'cat',
+  CLEAR = 'clear',
+  WHOAMI = 'whoami',
+  SSH = 'ssh',
 }
 
 export const enum FlagsEnum {
-  ALL = "-A",
+  ALL = '-A',
 }
 
 const commandsValidFlags: Partial<Record<CommandsEnum, Array<FlagsEnum>>> = {
@@ -29,31 +32,34 @@ export const uova_di_pasqua = [
   {
     cmd: CommandsEnum.WHOAMI,
   },
+  {
+    cmd: CommandsEnum.SSH,
+  },
 ];
 export const commands = [
   {
     cmd: CommandsEnum.HELP,
-    description: "Show this page",
+    description: 'Show this page',
   },
   {
     cmd: CommandsEnum.CD,
-    args: "[directory]",
+    args: '[directory]',
     description:
-      "Change Directory - change the current working directory to a specific Folder, if no argument is passed will go back to last folder.",
+      'Change Directory - change the current working directory to a specific Folder, if no argument is passed will go back to last folder.',
   },
   {
     cmd: CommandsEnum.LS,
-    description: "List information about available directories",
+    description: 'List information about available directories',
     flags: `${FlagsEnum.ALL}`,
   },
   {
     cmd: CommandsEnum.CAT,
-    args: "[filename]",
-    description: "Print (display) the content of files",
+    args: '[filename]',
+    description: 'Print (display) the content of files',
   },
   {
     cmd: CommandsEnum.CLEAR,
-    description: "Clear the screen",
+    description: 'Clear the screen',
   },
 ];
 

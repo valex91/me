@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import BlinkingCaret from "../BlinkingCaret";
 import Breadcrumb from "../BreadCrumb";
 import { usePathname, useRouter } from "next/navigation";
 import { parseStdIn } from "./parseStdIn";
+import { PrintOutputFn } from "../StdInWrapper";
 
 type StdInProps = {
   enabled: boolean;
-  printOutput: (output: string) => void;
+  printOutput: PrintOutputFn;
 };
 
 export default function StdIn({ enabled, printOutput }: StdInProps) {
@@ -16,11 +17,22 @@ export default function StdIn({ enabled, printOutput }: StdInProps) {
   const router = useRouter();
   const pathname = usePathname();
   const ref = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function scrollInViewStdIn() {
+    if (formRef && formRef.current) {
+      formRef.current.scrollIntoView({ block: "end" });
+    }
+  }
   useEffect(() => {
     if (enabled && ref.current) {
       ref.current.focus();
     }
   }, [enabled]);
+
+  useEffect(() => {
+    scrollInViewStdIn();
+  }, [cmd]);
 
   useEffect(() => {
     const focusInput = setInterval(() => {
@@ -36,6 +48,7 @@ export default function StdIn({ enabled, printOutput }: StdInProps) {
 
   return (
     <form
+      ref={formRef}
       className="flex items-center"
       onSubmit={(e) => {
         e.preventDefault();

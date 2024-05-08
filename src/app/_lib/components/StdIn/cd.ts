@@ -11,7 +11,7 @@ const toValidRoute = (
   const isValid = !!directories.filter((dir) => dir.includes(path)).length;
 
   if (isValid) {
-    router.push(path);
+    router.push(path.startsWith(".") ? path.slice(1) : path);
   } else {
     print(`cd: no such directory ${path}`);
   }

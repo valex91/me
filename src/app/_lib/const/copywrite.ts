@@ -10,4 +10,7 @@ projects and collaborate effectively with cross-functional
 teams to deliver innovative and efficient cloud-based
 solutions.`;
 
-export const copywrite = { summary };
+const hacking =
+  "Hello friend, I didn't expect you here. This folder is the repository of my write-ups for CTF challenges that I've completed, aside from the usual suspects like OverTheWire, HackThisWebsite, HackTheBox, and TryHackMe. If you're here, I'm sure you know how to find them";
+
+export const copywrite = { summary, hacking };

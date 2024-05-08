@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import React, { ReactNode, useRef, useState } from "react";
 import StdIn from "../StdIn";
 
-export type PrintOutputFn = (output: string) => void;
+export type PrintOutputFn = (output: string | React.ReactNode) => void;
 export const CLEAR_CHAR = "&>$`CLEAR__CONSOLE__$<&`";
 
 export type StdInWrapperProps = {
@@ -15,7 +15,9 @@ export default function StdInWrapper({
   enabled,
   initialState,
 }: StdInWrapperProps) {
-  const [stdOutBuffer, setStdOutBuffer] = useState<string[]>([]);
+  const [stdOutBuffer, setStdOutBuffer] = useState<Array<string | ReactNode>>(
+    []
+  );
   const [hasReceivedClear, setHasReceivedClear] = useState<boolean>(false);
   const improvedSet = (output: string) => {
     if (output === CLEAR_CHAR) {

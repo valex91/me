@@ -2,37 +2,77 @@ import {
   CommandsEnum,
   FlagsEnum,
   flagForCommandValidator,
-} from "@/app/(console)/@stdOut/help/_lib/components/Commands";
-import { PrintOutputFn } from "../StdInWrapper";
-import { CmdParams } from "./parseStdIn";
-import Disclaimer from "../Disclaimer";
+} from '@/app/(console)/@stdOut/help/_lib/components/Commands';
+import { PrintOutputFn } from '../StdInWrapper';
+import { CmdParams } from './parseStdIn';
+import { pathingArgsUtil } from './pathing';
 
 export enum Directories {
-  PROJECTS = "/projects",
-  SKILLS = "skills/",
-  CAREER = "carreer/",
-  BIO = "bio/",
-  SOCIAL = "social/",
-  ARTICLES = "articles/",
-  HACKING = ".hacking/",
+  PROJECTS = '/projects',
+  SKILLS = 'skills/',
+  CAREER = 'carreer/',
+  BIO = 'bio/',
+  SOCIAL = 'social/',
+  ARTICLES = 'articles/',
+  HACKING = '.hacking/',
+  HELP = '/help',
+  ROOT = '/',
 }
 
 export const directories = [
-  "projects/",
-  "skills/",
-  "carreer/ ",
-  "bio/",
-  "social/",
-  "articles/",
-  ".hacking/",
+  'projects/',
+  'skills/',
+  'carreer/ ',
+  'bio/',
+  'social/',
+  'articles/',
+  '.hacking/',
 ];
 
-export const ContentInContext: Partial<Record<Directories, string[]>> = {
-  [Directories.PROJECTS]: ["twitterant.txt", "tootsie.txt"],
+const lsError = (path: string) => `ls: ${path} No such directory`;
+
+export const ContentInDirectory: Partial<Record<Directories, string[]>> = {
+  [Directories.PROJECTS]: ['twitterant.txt', 'tootsie.txt', 'me.txt'],
+  [Directories.ROOT]: directories,
+  [Directories.SKILLS]: ['what_im_good_at.txt'],
+  [Directories.CAREER]: ['timeline.txt'],
+  [Directories.HACKING]: [
+    'october.txt',
+    'symfonos5.txt',
+    'five861.txt',
+    'meAndMyGF.txt',
+  ],
 };
 
-export const getFileByContext = (context: string) => {
-  return ContentInContext[context as Directories];
+export const getFilesByDirectory = (context: string) => {
+  return ContentInDirectory[context as Directories];
+};
+
+type LSStructure = typeof ContentInDirectory;
+
+function getContentOfDir<T extends keyof LSStructure>(
+  key: T
+): string[] | undefined {
+  for (const objDirectoryKey in ContentInDirectory) {
+    if (objDirectoryKey.includes(key)) {
+      return ContentInDirectory[objDirectoryKey as T];
+    }
+  }
+
+  return undefined;
+}
+
+const lsFlagsFilter = (cmdParams: CmdParams, directories: string[]) => {
+  if (cmdParams.flags) {
+    const relevantFlags = cmdParams.flags.filter((flag) =>
+      flagForCommandValidator(CommandsEnum.LS, flag)
+    );
+    if (relevantFlags.includes(FlagsEnum.ALL)) {
+      return directories.join(' ');
+    }
+  }
+
+  return directories.filter((dir) => !dir.startsWith('.')).join(' ');
 };
 
 export const lsStrategy = (
@@ -41,9 +81,20 @@ export const lsStrategy = (
   cmdParams: CmdParams,
   context: Directories
 ) => {
-  if (context && context !== "/") {
-    console.log(context, " CONTEXTTTTT");
-    print(getFileByContext(context).join(" "));
+  if (cmdParams.args.length) {
+    const path = pathingArgsUtil(cmdParams.args) as Directories[];
+    const content = getContentOfDir(path[path.length - 1]);
+
+    print(
+      content
+        ? lsFlagsFilter(cmdParams, content)
+        : lsError(cmdParams.args.join(''))
+    );
+    return;
+  }
+
+  if (context && context !== Directories.ROOT) {
+    print(lsFlagsFilter(cmdParams, getFilesByDirectory(context)!));
     return;
   }
 
@@ -52,9 +103,9 @@ export const lsStrategy = (
       flagForCommandValidator(CommandsEnum.LS, flag)
     );
     if (relevantFlags.includes(FlagsEnum.ALL)) {
-      print(directories.join(" "));
+      print(directories.join(' '));
       return;
     }
   }
-  print(directories.filter((dir) => !dir.startsWith(".")).join(" "));
+  print(directories.filter((dir) => !dir.startsWith('.')).join(' '));
 };
