@@ -34,7 +34,9 @@ const cmdStrategyMap: Record<CommandsEnum, CommandStrategy> = {
   },
   [CommandsEnum.CAT]: catStrategy as CommandStrategy,
   [CommandsEnum.SSH]: () => {},
-  [CommandsEnum.RM]: () => {}
+  [CommandsEnum.RM]: (router: AppRouterInstance) => {
+    router.push('/panic');
+  },
 };
 
 export const parseStdIn = (
