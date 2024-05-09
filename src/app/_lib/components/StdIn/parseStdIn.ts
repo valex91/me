@@ -56,7 +56,7 @@ export const parseStdIn = (
     .filter((fragment) => !fragment.startsWith('-'));
 
   if (AVAILABLE_COMMAND.includes(cmdHead.toLowerCase() as CommandsEnum)) {
-    cmdStrategyMap[cmdHead as keyof typeof cmdStrategyMap](
+    cmdStrategyMap[cmdHead.toLowerCase() as keyof typeof cmdStrategyMap](
       router,
       printOutput,
       { flags, args },
