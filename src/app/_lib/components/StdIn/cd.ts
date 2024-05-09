@@ -1,7 +1,7 @@
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { CmdParams, CommandStrategy } from "./parseStdIn";
-import { PrintOutputFn } from "../StdInWrapper";
-import { directories } from "./ls";
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { CmdParams, CommandStrategy } from './parseStdIn';
+import { PrintOutputFn } from '../StdInWrapper';
+import { directories } from './ls';
 
 const toValidRoute = (
   path: string,
@@ -11,7 +11,7 @@ const toValidRoute = (
   const isValid = !!directories.filter((dir) => dir.includes(path)).length;
 
   if (isValid) {
-    router.push(path.startsWith(".") ? path.slice(1) : path);
+    router.push(path.startsWith('.') ? path.slice(1) : path);
   } else {
     print(`cd: no such directory ${path}`);
   }
@@ -27,7 +27,7 @@ export const cdStrategy: CommandStrategy = (
   } else if (args.args.length) {
     const last = args.args.slice(-1)[0];
 
-    if (last.startsWith("..")) {
+    if (last.startsWith('..')) {
       router.back();
     } else {
       toValidRoute(last, router, print);

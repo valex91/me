@@ -1,25 +1,25 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Disclaimer() {
   return (
     <div className="mt-4 w-full text-center">
       <p className="w-8/12 my-0 mx-auto">
         Welcome to a Unique Browsing Experience! If you prefer a more
-        traditional website layout{" "}
+        traditional website layout{' '}
         <Link
           className="text-green underline pointer"
-          href={{ pathname: "/optout" }}
+          href={{ pathname: '/optout' }}
         >
           click here
         </Link>
-        . Otherwise,{" "}
+        . Otherwise,{' '}
         <Link
           download="CV Valentino Losito.pdf"
           className="text-green underline pointer"
-          href={{ pathname: "/docs/cv.pdf" }}
+          href={{ pathname: '/docs/cv.pdf' }}
         >
           download my CV
-        </Link>{" "}
+        </Link>{' '}
         or continue here for a console-like interaction.
       </p>
       <p className="text-left mt-5 mb-1">

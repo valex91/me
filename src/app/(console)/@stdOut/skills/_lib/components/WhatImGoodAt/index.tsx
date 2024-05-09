@@ -1,5 +1,5 @@
-import { copywrite } from "@/app/_lib/const/copywrite";
-import { AsciiLogoDisplayer } from "../Logo";
+import { copywrite } from '@/app/_lib/const/copywrite';
+import { AsciiLogoDisplayer } from '../Logo';
 import {
   ANGULAR_ASCII,
   AWS_ASCII,
@@ -7,7 +7,7 @@ import {
   NODE_ASCII,
   REACT_ASCII,
   TS_ASCII,
-} from "./const/logos";
+} from './const/logos';
 
 const skillLogos = [
   TS_ASCII,

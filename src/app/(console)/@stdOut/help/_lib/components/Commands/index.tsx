@@ -8,6 +8,7 @@ export const enum CommandsEnum {
   CLEAR = 'clear',
   WHOAMI = 'whoami',
   SSH = 'ssh',
+  RM = 'rm',
 }
 
 export const enum FlagsEnum {
@@ -34,6 +35,9 @@ export const uova_di_pasqua = [
   },
   {
     cmd: CommandsEnum.SSH,
+  },
+  {
+    cmd: CommandsEnum.RM,
   },
 ];
 export const commands = [

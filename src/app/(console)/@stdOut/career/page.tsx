@@ -1,4 +1,4 @@
-import StdInWrapper from "@/app/_lib/components/StdInWrapper";
+import StdInWrapper from '@/app/_lib/components/StdInWrapper';
 
 export default function CareerPage() {
   return (

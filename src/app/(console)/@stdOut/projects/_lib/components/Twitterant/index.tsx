@@ -1,5 +1,5 @@
-import Link from "next/link";
-import TwitterantHeader from "../TwitterantHeader";
+import Link from 'next/link';
+import TwitterantHeader from '../TwitterantHeader';
 
 export default function Twitterant() {
   return (
@@ -10,7 +10,7 @@ export default function Twitterant() {
         functions to automate giveaway participation.
       </p>
       <p className="mb-4">
-        This particulare project was featured in{" "}
+        This particulare project was featured in{' '}
         <Link
           className="underline cursor-pointer"
           href="https://medium.com/dunelm-tech/aws-
@@ -20,14 +20,14 @@ export default function Twitterant() {
         </Link>
       </p>
       <p className="mb-4">
-        The code for this project at the moment is public as I'm no longer
+        The code for this project at the moment is public as I&apos;m no longer
         maintaining it due to the changes to the api that happened when Twitter
-        turned into X ( greedy monetisation ) and can be found on my{" "}
+        turned into X ( greedy monetisation ) and can be found on my{' '}
         <Link
-          class="underline cursor-pointer"
+          className="underline cursor-pointer"
           href="https://github.com/valex91/twitterant"
         >
-          Github page{" "}
+          Github page{' '}
         </Link>
       </p>
     </>

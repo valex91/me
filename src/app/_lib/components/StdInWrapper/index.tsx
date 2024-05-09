@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { ReactNode, useRef, useState } from "react";
-import StdIn from "../StdIn";
+import React, { ReactNode, useRef, useState } from 'react';
+import StdIn from '../StdIn';
 
 export type PrintOutputFn = (output: string | React.ReactNode) => void;
-export const CLEAR_CHAR = "&>$`CLEAR__CONSOLE__$<&`";
+export const CLEAR_CHAR = '&>$`CLEAR__CONSOLE__$<&`';
 
 export type StdInWrapperProps = {
   enabled: boolean;
@@ -19,7 +19,7 @@ export default function StdInWrapper({
     []
   );
   const [hasReceivedClear, setHasReceivedClear] = useState<boolean>(false);
-  const improvedSet = (output: string) => {
+  const improvedSet: PrintOutputFn = output => {
     if (output === CLEAR_CHAR) {
       setStdOutBuffer([]);
       setHasReceivedClear(true);
@@ -32,7 +32,7 @@ export default function StdInWrapper({
     <>
       {hasReceivedClear ? null : initialState}
       {stdOutBuffer.map((line, i) => {
-        return <p key={i}>{line}</p>;
+        return <div key={i}>{line}</div>;
       })}
       <StdIn enabled={enabled} printOutput={improvedSet} />
     </>

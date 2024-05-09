@@ -1,10 +1,10 @@
-import CareerStep from "../CareerStep";
+import CareerStep from '../CareerStep';
 
 const career = [
   {
-    employeer: "Dunelm",
-    title: "Full Stack Senior Software Engineer",
-    timeframe: "08/2021 - Present",
+    employeer: 'Dunelm',
+    title: 'Full Stack Senior Software Engineer',
+    timeframe: '08/2021 - Present',
     tasks: [
       `Architect and implement scalable web applications and services using Node.js as
 backend services and React/Next.js for the frontend.`,
@@ -15,9 +15,9 @@ performance and status using Datadog.`,
     ],
   },
   {
-    employeer: "ITG Group",
-    title: "Senior Web Application Developer",
-    timeframe: "01/2021 - 08/2021",
+    employeer: 'ITG Group',
+    title: 'Senior Web Application Developer',
+    timeframe: '01/2021 - 08/2021',
     tasks: [
       `Delivered complex business requirements and functionality of company product in
 accordance to product specifications.`,
@@ -26,9 +26,9 @@ an existing AngularJS application`,
     ],
   },
   {
-    employeer: "MHR",
-    title: "Senior Web Application Developer",
-    timeframe: "04/2016 - 01/2021",
+    employeer: 'MHR',
+    title: 'Senior Web Application Developer',
+    timeframe: '04/2016 - 01/2021',
     tasks: [
       `Ensure high quality of coding standards by defining conventions while liaising with
       features team and senior developers. Train developers’ team by designing mentoring
@@ -39,9 +39,9 @@ usability. `,
     ],
   },
   {
-    employeer: "Freelance",
-    title: "Web Application Developer",
-    timeframe: "01/2016 - 04/2016",
+    employeer: 'Freelance',
+    title: 'Web Application Developer',
+    timeframe: '01/2016 - 04/2016',
     tasks: [
       `Crafted libraries and supported common features in product that promote re-
 usability.`,

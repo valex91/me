@@ -5,7 +5,7 @@ import {
 } from '@/app/(console)/@stdOut/help/_lib/components/Commands';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { CLEAR_CHAR, PrintOutputFn } from '../StdInWrapper';
-import { lsStrategy } from './ls';
+import { Directories, lsStrategy } from './ls';
 import { cdStrategy } from './cd';
 import { catStrategy } from './cat';
 import { helpStrategy } from './help';
@@ -18,7 +18,8 @@ const AVAILABLE_COMMAND = [
 export type CommandStrategy = (
   router: AppRouterInstance,
   print: PrintOutputFn,
-  cmdParams: CmdParams
+  cmdParams: CmdParams,
+  context: Directories
 ) => void;
 //routable command need to be abstracted probably lets investigate what is needed when there is more implementations
 const cmdStrategyMap: Record<CommandsEnum, CommandStrategy> = {
@@ -32,6 +33,8 @@ const cmdStrategyMap: Record<CommandsEnum, CommandStrategy> = {
     print(CLEAR_CHAR);
   },
   [CommandsEnum.CAT]: catStrategy as CommandStrategy,
+  [CommandsEnum.SSH]: () => {},
+  [CommandsEnum.RM]: () => {}
 };
 
 export const parseStdIn = (
@@ -54,7 +57,7 @@ export const parseStdIn = (
       router,
       printOutput,
       { flags, args },
-      context
+      context as Directories
     );
   } else {
     printOutput(`command not found: ${cmdHead}`);
