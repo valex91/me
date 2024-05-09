@@ -74,6 +74,7 @@ export default function StdIn({ enabled, printOutput }: StdInProps) {
         className="w-0 border-0 p-0 m-0 bg-transparent outline-none"
         type="text"
       ></input>
+      <button type="submit" className="hidden"></button>
       {enabled ? <BlinkingCaret /> : null}
     </form>
   );

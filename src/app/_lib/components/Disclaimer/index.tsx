@@ -16,7 +16,7 @@ export default function Disclaimer() {
         <Link
           download="CV Valentino Losito.pdf"
           className="text-green underline pointer"
-          href={{ pathname: '/cv.pdf' }}
+          href={{ pathname: 'https://github.com/valex91/me/raw/main/public/CV.pdf' }}
         >
           download my CV
         </Link>{' '}
