@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SectionTitle from '../SectionTitle';
 
 export default function About() {
@@ -28,6 +29,15 @@ export default function About() {
         results that make a difference. Let&apos;s make something awesome
         together!
       </p>
+      <Link
+        download="CV Valentino Losito.pdf"
+        className="font-bold mb-4 underline text-flame"
+        href={{
+          pathname: 'https://github.com/valex91/me/raw/main/public/CV.pdf',
+        }}
+      >
+        Download my CV
+      </Link>
     </>
   );
 }
