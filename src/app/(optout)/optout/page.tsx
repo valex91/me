@@ -6,7 +6,7 @@ import Skills from './_lib/components/Skills';
 
 export default function OptOutPage() {
   return (
-    <div className="p-10 py-0">
+    <div className="p-5 md:p-10 py-0">
       <OptOutHeader />
       <About />
       <Projects />

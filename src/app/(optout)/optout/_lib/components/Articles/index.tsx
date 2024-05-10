@@ -25,20 +25,25 @@ export default function Articles() {
   return (
     <div className="mb-4">
       <SectionTitle text="Articles & Writeups" />
-      <div className="container flex space-x-20">
+      <div className="container md:flex md:space-x-20">
         {articles.map((a) => {
           return (
-            <Link
+            <div
               key={a.link}
-              className="underline max-h-[200px] cursor-pointer overflow-hidden text-l text-flame mb-4"
-              href={a.link}
+              className="max-h-[100px] h-[100px] mb-4 md:m-0 md:max-h-[200px] md:h-[200px] overflow-hidden"
             >
-              {a.title}
-              <div
-                className="text-white no-underline text-xs"
-                dangerouslySetInnerHTML={{__html: a.description}}
-              ></div>
-            </Link>
+              {' '}
+              <Link
+                className="underline cursor-pointer	text-l text-flame mb-4"
+                href={a.link}
+              >
+                {a.title}
+                <div
+                  className="text-white no-underline text-xs"
+                  dangerouslySetInnerHTML={{__html: a.description}}
+                ></div>
+              </Link>
+            </div>
           );
         })}
       </div>

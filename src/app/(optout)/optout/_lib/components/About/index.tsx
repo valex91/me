@@ -4,8 +4,8 @@ export default function About() {
   return (
     <>
       <p className="font-thin mb-4">
-        I’m a tech enthusiast with a solid background in building, deploying,
-        and managing scalable web applications on{' '}
+        I&apos;m a tech enthusiast with a solid background in building,
+        deploying, and managing scalable web applications on{' '}
         <strong className="text-flame">AWS</strong>. I love coding in{' '}
         <strong className="text-flame">Typescript</strong> and{' '}
         <strong className="text-flame">Node.js,</strong> crafting both the guts
@@ -23,9 +23,10 @@ export default function About() {
       </p>
       <p className="font-thin mb-4">
         I thrive on leading projects and working alongside diverse teams to cook
-        up innovative, cloud-based solutions. Whether it's streamlining
-        processes or juggling multiple projects, I'm all about delivering
-        results that make a difference. Let's make something awesome together!
+        up innovative, cloud-based solutions. Whether it&apos;s streamlining
+        processes or juggling multiple projects, I&apos;m all about delivering
+        results that make a difference. Let&apos;s make something awesome
+        together!
       </p>
     </>
   );
