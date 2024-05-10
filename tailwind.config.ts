@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+import type {Config} from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -17,6 +17,9 @@ const config: Config = {
       magenta: 'rgb(187,0,187)',
       cyan: 'rgb(0,187,187)',
       white: 'rgb(191,191,191)',
+      richblack: 'rgb(3,25,39)',
+      cieladon: 'rgb(184,213,184)',
+      flame: 'rgb(216,91,47)',
     },
     extend: {
       fontFamily: {
