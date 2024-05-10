@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type {Metadata} from 'next';
 import localFont from 'next/font/local';
 import '../globals.css';
 import Name from '../_lib/components/Name';
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mesloLGS.className + ' p-1.5'}>
+      <body className={mesloLGS.className + ' p-1.5 bg-black'}>
         <main>
           <Name />
           {stdOut}

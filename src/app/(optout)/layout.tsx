@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import type {Metadata} from 'next';
 import '../globals.css';
-import Name from '../_lib/components/Name';
 
-const mesloLGS = localFont({
-  src: '../../../public/fonts/MesloLGS NF Regular.ttf',
-  variable: '--font-mesloLGS',
+import {Roboto} from 'next/font/google';
+
+const roboto = Roboto({
+  weight: ['100', '400', '700'],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -20,12 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mesloLGS.className + ' p-1.5'}>
-        <main>
-          <Name />
-          <p> opt out</p>
-          {children}
-        </main>
+      <body className={roboto.className + ' p-1.5 bg-richblack'}>
+        <main>{children}</main>
       </body>
     </html>
   );

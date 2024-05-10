@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
-type ArticleFeed = {
+export type ArticleFeed = {
   author: string;
   categories: string[];
   content: string;
@@ -22,7 +22,6 @@ export default function ArticleDisplay() {
         );
 
         const data = await response.json();
-        console.log(data, 'deee');
         setArticles(
           data.items.filter((i: ArticleFeed) => i.title.includes('write'))
         );
